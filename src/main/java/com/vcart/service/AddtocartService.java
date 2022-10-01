@@ -1,5 +1,6 @@
 package com.vcart.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,15 @@ public class AddtocartService {
 	@Autowired
 	private AddtocartDao addtocartdao;
 	
-	public void addToCart(AddtoCart cart, String username) {
-		addtocartdao.save()
+	public void addToCart(AddtoCart product) {
+		addtocartdao.save(product);
 		
+	}
+
+	
+	public List<AddtoCart> mycart( AddtoCart product){
+		return  addtocartdao.findAll();
+		 
 	}
 
 }
