@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.vcart.dao.AddtocartDao;
 import com.vcart.entity.AddtoCart;
+import com.vcart.entity.Product;
 
 @Service
 public class AddtocartService {
@@ -13,8 +14,11 @@ public class AddtocartService {
 	@Autowired
 	private AddtocartDao addtocartdao;
 	
-	public void addToCart(AddtoCart product) {
-		addtocartdao.save(product);
+	
+	public AddtoCart addToCart(Product product, AddtoCart addtoCart) {
+		addtoCart.setPname(product.getPname());
+		addtoCart.setPprice(product.getPprice());
+		return addtocartdao.save(product,addtoCart);
 		
 	}
 

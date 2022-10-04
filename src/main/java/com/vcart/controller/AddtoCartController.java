@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vcart.entity.AddtoCart;
+import com.vcart.entity.Product;
 import com.vcart.service.AddtocartService;
 
 @RestController
@@ -21,8 +22,8 @@ public class AddtoCartController {
 	
 	
 	@PostMapping("/save")
-	 public void addToCart( @RequestBody AddtoCart product) {
-		service.addToCart(product);
+	 public AddtoCart addToCart( @RequestBody Product product,AddtoCart addtoCart) {
+		return service.addToCart(product, addtoCart);
 	}
 	
 

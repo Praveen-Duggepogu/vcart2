@@ -1,10 +1,13 @@
 package com.vcart.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,12 +22,18 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int userid;
+	
 	private String Name;
-	private float Password;
+	private String Password;
 	private long Phonenumber;
 	private String Address;
 	private String Email;
-	private String Isvender;
-	private boolean Isuser;
+	private boolean isVendor;
+	private boolean isUser;
+	
+	@ManyToOne(cascade = CascadeType.ALL) 
+	private AddtoCart addtocart;
+	
+	
 }
